@@ -159,7 +159,8 @@ class Ubuntu {
 	 */
 	public function Reboot($pwd) {
 
-		$cmd = '/usr/bin/expect apps/system/shell.sh \'ls \' root '.$pwd;
+		//todo implement real command
+		$cmd = '/usr/bin/expect apps/system/shell.sh \'ls \' '.$pwd;
 		error_log($cmd);
 		$result = shell_exec($cmd);
 		error_log($result);
