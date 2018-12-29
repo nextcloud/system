@@ -1,0 +1,18 @@
+# TODOs
+
+- Check dependencies like expect
+- Fix background check for disk space
+- Better JS password dialog 
+
+- Show packages to update with 'apt list --upgradable'
+- Button to update linux packages
+- Background check for software packages and send notification
+
+- Show Raid Status
+- Show Fan/Termal control
+- JS Terminal to ssh into server
+- Show system log
+- Letsencrypt Config
+
+
+

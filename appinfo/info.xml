@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>system</id>
+    <name>System Administration</name>
+    <summary>Makes it possible to do some simple system administration tasks via Nextcloud.</summary>
+    <description>
+        Makes it possible to do some simple system administration tasks via Nextcloud
+    </description>
+    <version>1.0.1</version>
+    <licence>agpl</licence>
+    <author>Frank Karlitschek</author>
+    <namespace>System</namespace>
+    <default_enable/>
+    <category>tools</category>
+    <website>https://github.com/nextcloud/system</website>
+    <bugs>https://github.com/nextcloud/system/issues</bugs>
+    <dependencies>
+        <nextcloud min-version="15" max-version="16" />
+    </dependencies>
+    <background-jobs>
+        <job>OCA\System\BackgroundJob\SystemCheck</job>
+    </background-jobs>
+    <settings>
+        <admin>OCA\System\Settings\AdminSettings</admin>
+        <admin-section>OCA\System\Settings\AdminSection</admin-section>
+    </settings>
+</info>

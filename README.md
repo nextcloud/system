@@ -1,2 +1,3 @@
-# system
-A simple system administration app for Nextcloud
+# System
+
+Makes is possible to do some simple system administration tasks with Nextcloud

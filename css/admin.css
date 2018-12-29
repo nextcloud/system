@@ -1,0 +1,139 @@
+
+#reboot {
+	margin: 20px 0;
+	color: #993333;
+}
+#shutdown {
+	margin: 20px 0;
+	color: #993333;
+}
+
+.info {
+	font-weight: bold;
+	text-color: #777777;
+}
+
+
+.smallinfo {
+	color: #888888;
+	font-size: 11px;
+}
+
+.infobox {
+	width: 400px;
+	border: 1px solid #DDDDDD;
+	margin: 10px 0px 20px 0px;
+	padding: 15px;
+	color: #555555;
+	background-color: #F9F9F9;
+	border-radius: 6px;
+	box-shadow: 1px 1px 9px 1px #EEEEEE;
+
+}
+
+.infobox h3 {
+	color: #555555;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 5px 0px 10px 0px;
+	margin: 0px;
+}
+
+.infoicon {
+	width: 28px;
+	float: left;
+	padding: 5px;
+}
+
+
+.diskchart-container {
+	position: static;
+	display: inline-block;
+	height:130px;
+	width:130px;
+	float:left;
+	border: 1px black;
+	margin: 5px 10px 5px 5px;
+}
+
+.modalreboot {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modalreboot-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 5px;
+}
+
+.modalshutdown {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modalshutdown-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 5px;
+}
+.rebootclose-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: #F0F0F0;
+}
+.rebootclose-button:hover {
+    background-color: #D0D0D0;
+}
+.shutdownclose-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: #F0F0F0;
+}
+.shutdownclose-button:hover {
+    background-color: #D0D0D0;
+}
+.show-modalreboot {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.show-modalshutdown {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
