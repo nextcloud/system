@@ -62,6 +62,7 @@ function FormatBytes($byte) {
 //	<button id="shutdown" name="shutdown">Shutdown</button>
 ?>
 
+<?php if($_['rootcommandsavailable']) { ?>
 	<button class="triggerreboot" id="reboot"><?php p($l->t('Reboot')); ?></button>
 	<div class="modalreboot">
 	    <div class="modalreboot-content">
@@ -87,6 +88,9 @@ function FormatBytes($byte) {
 			</form>
 	    </div>
 	</div>
+<?php } else { ?>
+	<br /><p><h1><?php p($l->t('The \'expect\' command line tool is not installed. Commands that require root permissions are not available.')); ?></h1></p>
+<?php } ?>
 
 
 </div>

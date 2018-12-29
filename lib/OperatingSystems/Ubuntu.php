@@ -157,6 +157,14 @@ class Ubuntu {
 	/**
 	 * @return string
 	 */
+	public function RootCommandsAvailable() {
+		$return = shell_exec('which expect');
+	    return !empty($return);
+	}
+
+	/**
+	 * @return string
+	 */
 	public function Reboot($pwd) {
 
 		//todo implement real command

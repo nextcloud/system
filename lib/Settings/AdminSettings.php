@@ -98,6 +98,7 @@ class AdminSettings implements ISettings {
 					'diskinfo' => $this-> os -> getDiskInfo(),
 					'networkinfo' => $this-> os -> getNetworkInfo(),
 					'networkinterfaces' => $this-> os -> getNetworkInterfaces(),
+					'rootcommandsavailable' => $this-> os -> RootCommandsAvailable(),
 				];
 				return new TemplateResponse('system', 'admin', $parameters);
 			}

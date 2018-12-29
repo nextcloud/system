@@ -221,6 +221,14 @@ class Os {
 	}
 
 	/**
+	* @return bool
+	*/
+	public function RootCommandsAvailable() {
+		$data = $this -> backend -> RootCommandsAvailable();
+		return $data;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function Reboot($pwd) {
