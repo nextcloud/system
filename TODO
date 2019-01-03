@@ -7,11 +7,23 @@
 - Button to update linux packages
 - Background check for software packages and send notification
 
+- Show CPU cores
+- Show system time
+- Show MAC address 
+- Show timezone
+- Show timeserver
+- Shoe disk overview with serial number, temperature and health
+
+
 - Show Raid Status
 - Show Fan/Termal control
 - JS Terminal to ssh into server
 - Show system log
 - Letsencrypt Config
+
+- Send performance alert if:
+  - CPU utilisation is over x%
+  - Memory is over x% used
 
 
 

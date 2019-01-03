@@ -76,8 +76,10 @@ class Ubuntu {
 	 * @return string
 	 */
 	public function getCPUName() {
-		$cpu = shell_exec('cat /proc/cpuinfo  | grep -i \'Model name\' | cut -f 2 -d ":" | awk \'{$1=$1}1\'');
-		return $cpu;
+		$cpu   = shell_exec('cat /proc/cpuinfo  | grep -i \'Model name\' | cut -f 2 -d ":" | awk \'{$1=$1}1\'');
+		$cores = shell_exec('cat /proc/cpuinfo  | grep -i \'cpu cores\' | cut -f 2 -d ":" | awk \'{$1=$1}1\'');
+		if ($cores == 1) $cores = ' ('.$cores.' core)'; else $cores = ' ('.$cores.' cores)';
+		return $cpu.' '.$cores;
 	}
 
 	/**
