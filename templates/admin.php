@@ -157,6 +157,11 @@ function FormatBytes($byte) {
 				echo('<span class="info">'.$interface['speed'].' '.$interface['duplex'].'</span>');
 				echo('</p><p>');
 
+				if(!empty($interface['mac'])) {
+					p($l->t('MAC').': ');
+					echo('<span class="info">'.$interface['mac'].'</span>');
+					echo('</p><p>');
+				}
 				p($l->t('IPv4').': ');
 				echo('<span class="info">'.$interface['ipv4'].'</span>');
 				echo('</p><p>');

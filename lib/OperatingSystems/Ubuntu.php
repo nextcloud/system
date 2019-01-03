@@ -113,6 +113,7 @@ class Ubuntu {
 		foreach($interfaces as $interface) {
 				$iface = array();
 				$iface['interface'] = basename($interface);
+				$iface['mac'] = shell_exec('ip addr show dev '.$iface['interface'].' | grep "link/ether " | cut -d \' \' -f 6  | cut -f 1 -d \'/\'');
 				$iface['ipv4'] = shell_exec('ip addr show dev '.$iface['interface'].' | grep "inet " | cut -d \' \' -f 6  | cut -f 1 -d \'/\'');
 				$iface['ipv6'] = shell_exec('ip -o -6 addr show '.$iface['interface'].' | sed -e \'s/^.*inet6 \([^ ]\+\).*/\1/\'');
 				if ($iface['interface']<>'lo') {

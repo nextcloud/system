@@ -1,22 +1,19 @@
 # TODOs
 
 - Fix background check for disk space
-- Better JS password dialog 
+- Better JS password dialog
 
 - Show packages to update with 'apt list --upgradable'
 - Button to update linux packages
 - Background check for software packages and send notification
 
-- Show CPU cores
 - Show system time
-- Show MAC address 
 - Show timezone
 - Show timeserver
-- Shoe disk overview with serial number, temperature and health
-
+- Show disk overview with serial number, temperature and health
 
 - Show Raid Status
-- Show Fan/Termal control
+- Show fan/temperature control
 - JS Terminal to ssh into server
 - Show system log
 - Letsencrypt Config
@@ -24,6 +21,3 @@
 - Send performance alert if:
   - CPU utilisation is over x%
   - Memory is over x% used
-
-
-
