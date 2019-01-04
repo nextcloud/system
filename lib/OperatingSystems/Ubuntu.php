@@ -85,8 +85,25 @@ class Ubuntu {
 	/**
 	 * @return string
 	 */
+	public function getTime() {
+		$uptime = shell_exec('date');
+		return $uptime;
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getUptime() {
 		$uptime = shell_exec('uptime -p');
+		return $uptime;
+	}
+
+
+	/**
+	* @return string
+	*/
+	public function getTimeServers() {
+		$uptime = shell_exec('cat /etc/ntp.conf |grep  \'^pool\' | cut -f 2 -d " "');
 		return $uptime;
 	}
 
@@ -113,7 +130,7 @@ class Ubuntu {
 		foreach($interfaces as $interface) {
 				$iface = array();
 				$iface['interface'] = basename($interface);
-				$iface['mac'] = shell_exec('ip addr show dev '.$iface['interface'].' | grep "link/ether " | cut -d \' \' -f 6  | cut -f 1 -d \'/\'');
+				$iface['mac']  = shell_exec('ip addr show dev '.$iface['interface'].' | grep "link/ether " | cut -d \' \' -f 6  | cut -f 1 -d \'/\'');
 				$iface['ipv4'] = shell_exec('ip addr show dev '.$iface['interface'].' | grep "inet " | cut -d \' \' -f 6  | cut -f 1 -d \'/\'');
 				$iface['ipv6'] = shell_exec('ip -o -6 addr show '.$iface['interface'].' | sed -e \'s/^.*inet6 \([^ ]\+\).*/\1/\'');
 				if ($iface['interface']<>'lo') {

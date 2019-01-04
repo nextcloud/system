@@ -1,23 +1,30 @@
 # TODOs
 
+## ToFix
 - Fix background check for disk space
 - Better JS password dialog
 
-- Show packages to update with 'apt list --upgradable'
-- Button to update linux packages
-- Background check for software packages and send notification
-
-- Show system time
-- Show timezone
-- Show timeserver
-- Show disk overview with serial number, temperature and health
-
-- Show Raid Status
-- Show fan/temperature control
+## General
+- Send performance alert if:
+  - CPU usage is over 99%
+  - Memory is over 90% used
 - JS Terminal to ssh into server
 - Show system log
-- Letsencrypt Config
+- Show database report
+- Show PHP config report
 
-- Send performance alert if:
-  - CPU utilisation is over x%
-  - Memory is over x% used
+## Software
+- Show packages to update with 'apt list --upgradable'
+- Button to update linux packages
+- Background check for package updates and send notification
+
+## Disk
+- Show disk overview with serial number, temperature and health
+- Show Raid Status
+
+## Network
+- Show current network load via cat /proc/net/dev
+- LetsEncrypt Config
+
+## Health
+- Show fan/temperature control

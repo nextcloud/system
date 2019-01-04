@@ -79,6 +79,29 @@ $(document).ready(function(){
 			console.log(data);
 		}
 	});
+
+	var interval = 1000;  // 1000 = 1 second, 3000 = 3 seconds
+	function doAjax() {
+		$.ajax({
+			url: OC.linkToOCS('apps/system/api/v1/', 2) + 'time?format=json',
+			method: "GET",
+			success: function(response) {
+				var data = response.ocs.data;
+				document.getElementById("servertime").innerHTML = data.servertime;
+				document.getElementById("uptime").innerHTML = data.uptime;
+				document.getElementById("timeservers").innerHTML = data.timeservers;
+			},
+			error: function(data) {
+				console.log(data);
+			},
+			complete: function (data) {
+				setTimeout(doAjax, interval);
+			}
+		});
+	}
+	setTimeout(doAjax, interval);
+
+
 });
 
 

@@ -86,5 +86,15 @@ class EndpointController extends OCSController {
 
 	}
 
+	/**
+	 * @return DataResponse
+	 */
+	public function getTime(): DataResponse {
+		$servertime = $this->os->getTime();
+		$uptime = $this->os->getUptime();
+		$timeservers = $this->os->getTimeServers()[0];
+		return new DataResponse(array('servertime'=>$servertime,'uptime'=>$uptime,'timeservers'=>$timeservers));
+
+	}
 
 }

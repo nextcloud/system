@@ -53,8 +53,15 @@ function FormatBytes($byte) {
 		<?php p($l->t('Memory').': '); ?>
 		<span class="info"><?php p($_['memory']); ?></span>
 	</p><p>
+		<?php p($l->t('Server time').': '); ?>
+		<span class="info" id="servertime"></span>
+	</p><p>
 		<?php p($l->t('Uptime').': '); ?>
-		<span class="info"><?php p($_['uptime']); ?></span>
+		<span class="info" id="uptime"></span>
+	</p><p>
+		<?php p($l->t('Time Servers').': '); ?>
+		<span class="info" id="timeservers"></span>
+
 	</p>
 
 <?php

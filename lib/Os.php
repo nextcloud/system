@@ -143,9 +143,25 @@ class Os {
 	/**
 	 * @return string
 	 */
+	public function getTime() {
+		$data = $this -> backend -> getTime();
+		return $data;
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getUptime() {
 		$data = $this -> backend -> getUptime();
 		return $data;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTimeServers() {
+		$data = $this -> backend -> getTimeServers();
+		return explode("\n",$data);
 	}
 
 	/**

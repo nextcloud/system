@@ -24,5 +24,6 @@ return [
 		['name' => 'Endpoint#Reboot', 'url' => '/api/v1/reboot', 'verb' => 'POST'],
 		['name' => 'Endpoint#Shutdown', 'url' => '/api/v1/shutdown', 'verb' => 'POST'],
 		['name' => 'Endpoint#DiskData', 'url' => '/api/v1/diskdata', 'verb' => 'GET'],
+		['name' => 'Endpoint#getTime', 'url' => '/api/v1/time', 'verb' => 'GET'],
 	],
 ];

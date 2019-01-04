@@ -48,6 +48,9 @@ class AdminSettings implements ISettings {
 	/** @var IJobList */
 	private $jobList;
 
+	/** @var DatabaseStatistics  */
+	private $databaseStatistics;
+
 	/**
 	 * Admin constructor.
 	 *
@@ -68,6 +71,7 @@ class AdminSettings implements ISettings {
 		$this->l = $l;
 		$this->dateTimeFormatter = $dateTimeFormatter;
 		$this->jobList = $jobList;
+
 	}
 
 	/**
@@ -94,7 +98,6 @@ class AdminSettings implements ISettings {
 					'osname' => $this-> os -> getOSName(),
 					'memory' => $this-> os -> getMemory(),
 					'cpu' => $this-> os -> getCPUName(),
-					'uptime' => $this-> os -> getUptime(),
 					'diskinfo' => $this-> os -> getDiskInfo(),
 					'networkinfo' => $this-> os -> getNetworkInfo(),
 					'networkinterfaces' => $this-> os -> getNetworkInterfaces(),
