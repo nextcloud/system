@@ -62,17 +62,25 @@ class EndpointController extends OCSController {
 
 
 	/**
+	 * @param string $rootPassword
+	 *
 	 * @return DataResponse
 	 */
-	public function Reboot(): DataResponse {
+	public function Reboot($rootPassword): DataResponse {
+		var_dump($rootPassword);
+		exit;
 		$result = $this->os->reboot();
 		return new DataResponse();
 	}
 
 	/**
+	 * @param string $rootPassword
+	 *
 	 * @return DataResponse
 	 */
-	public function Shutdown(): DataResponse {
+	public function Shutdown($rootPassword): DataResponse {
+		var_dump($rootPassword);
+		exit;
 		$result = $this->os->shutdown();
 		return new DataResponse();
 	}

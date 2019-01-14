@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Frank Karlitsche <frank@nextcloud.com>
+ * @author Frank Karlitschek <frank@nextcloud.com>
  *
  * @license AGPL-3.0
  *

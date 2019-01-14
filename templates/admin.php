@@ -64,10 +64,8 @@ function FormatBytes($byte) {
 
 	</p>
 
-<?php
-//	<button id="reboot" name="reboot">Reboot</button>
-//	<button id="shutdown" name="shutdown">Shutdown</button>
-?>
+	<button id="reboot" name="reboot">Reboot</button>
+	<button id="shutdown" name="shutdown">Shutdown</button>
 
 <?php if($_['rootcommandsavailable']) { ?>
 	<button class="triggerreboot" id="reboot"><?php p($l->t('Reboot')); ?></button>
