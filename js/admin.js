@@ -1,38 +1,55 @@
 $(document).ready(function() {
-	var $section = $('#system');
-
-	$section.find('#shutdown').click(function() {
+	$('#shutdown').click(function() {
 		var $button = $(this);
 		$button.attr('disabled', true);
-		$.ajax({
-			url: OC.linkToOCS('apps/system/api/v1/', 2) + 'shutdown?format=json',
-			type: 'POST',
-			success: function(response) {
-				$button.attr('disabled', false);
-			},
-			error: function(xhr) {
-				$button.attr('disabled', false);
-				OC.Notification.showTemporary(t('system', 'An error occurred.'));
-			}
+
+		OCA.System.requireRootPassword(function(rootPassword) {
+			$.ajax({
+				url: OC.linkToOCS('apps/system/api/v1/', 2) + 'shutdown?format=json',
+				type: 'POST',
+				data: {
+					rootPassword: rootPassword
+				},
+				success: function(response) {
+					$button.attr('disabled', false);
+				},
+				error: function(xhr) {
+					$button.attr('disabled', false);
+					OC.Notification.showTemporary(t('system', 'An error occurred.'));
+				}
+			});
+		}, {}, function() {
+			$button.attr('disabled', false);
+			OC.Notification.showTemporary(t('system', 'An error occurred.'));
 		});
+
 	});
 
-	$section.find('#reboot').click(function() {
+	$('#reboot').click(function() {
 		var $button = $(this);
 		$button.attr('disabled', true);
-		$.ajax({
-			url: OC.linkToOCS('apps/system/api/v1/', 2) + 'reboot?format=json',
-			type: 'POST',
-			success: function(response) {
-				$button.attr('disabled', false);
 
-			},
-			error: function(xhr) {
-				$button.attr('disabled', false);
-				OC.Notification.showTemporary(t('system', 'An error occurred.'));
+		OCA.System.requireRootPassword(function(rootPassword) {
+			$.ajax({
+				url: OC.linkToOCS('apps/system/api/v1/', 2) + 'reboot?format=json',
+				type: 'POST',
+				data: {
+					rootPassword: rootPassword
+				},
+				success: function (response) {
+					$button.attr('disabled', false);
 
-			}
-		});
+				},
+				error: function (xhr) {
+					$button.attr('disabled', false);
+					OC.Notification.showTemporary(t('system', 'An error occurred.'));
+
+				}
+			});
+		}, {}, function() {
+			$button.attr('disabled', false);
+			OC.Notification.showTemporary(t('system', 'An error occurred.'));
+		})
 	});
 
 });
@@ -104,42 +121,57 @@ $(document).ready(function(){
 
 });
 
+OCA.System = OCA.System || {};
 
+/**
+ *
+ * @param {Function} callback
+ * @param {Object} options
+ * @param {Function} rejectCallback
+ */
+OCA.System.requireRootPassword = function(callback, options, rejectCallback) {
+	options = typeof options !== 'undefined' ? options : {};
+	var defaults = {
+		title: t('system','Root password required'),
+		text: t(
+			'system',
+			'This action requires you to enter your server\'s root password'
+		),
+		confirm: t('system', 'Confirm'),
+		label: t('system','Password'),
+		error: '',
+	};
 
+	var config = _.extend(defaults, options);
+	var self = this;
 
-$(document).ready(function() {
-
-	var modalreboot = document.querySelector(".modalreboot");
-	var triggerreboot = document.querySelector(".triggerreboot");
-	var modalshutdown = document.querySelector(".modalshutdown");
-	var triggershutdown = document.querySelector(".triggershutdown");
-	var rebootcloseButton = document.querySelector(".rebootclose-button");
-	var shutdowncloseButton = document.querySelector(".shutdownclose-button");
-
-
-	function toggleModalReboot() {
-    	modalreboot.classList.toggle("show-modalreboot");
-	}
-
-	function toggleModalShutdown() {
-		modalshutdown.classList.toggle("show-modalshutdown");
-	}
-
-	function windowOnClick(event) {
-    	if (event.target === modalreboot) {
-        	toggleModalReboot();
-    	}
-		if (event.target === modalshutdown) {
-			toggleModalShutdown();
+	OC.dialogs.prompt(
+		config.text,
+		config.title,
+		function (result, password) {
+			if (result && password !== '') {
+				if (_.isFunction(callback)) {
+					callback(password);
+				}
+			} else if (_.isFunction(rejectCallback)) {
+				rejectCallback()
+			}
+		},
+		true,
+		config.label,
+		true
+	).then(function() {
+		var $dialog = $('.oc-dialog:visible');
+		$dialog.find('.ui-icon').remove();
+		$dialog.addClass('password-confirmation');
+		if (config.error !== '') {
+			var $error = $('<p></p>').addClass('msg warning').text(config.error);
 		}
+		$dialog.find('.oc-dialog-content').append($error);
+		$dialog.find('.oc-dialog-buttonrow').addClass('aside');
 
-	}
-
-	triggerreboot.addEventListener("click", toggleModalReboot);
-	triggershutdown.addEventListener("click", toggleModalShutdown);
-
-	rebootcloseButton.addEventListener("click", toggleModalReboot);
-	shutdowncloseButton.addEventListener("click", toggleModalShutdown);
-	window.addEventListener("click", windowOnClick);
-
-});
+		var $buttons = $dialog.find('button');
+		$buttons.eq(0).hide();
+		$buttons.eq(1).text(config.confirm);
+	});
+}
